@@ -1,9 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useAppState } from "../context";
+
 import Button from "react-bootstrap/Button";
 import { Popover, OverlayTrigger } from "react-bootstrap";
 import LoginPopup from "../LoginPage/Login";
+
 function NavBar(props) {
+  const { appState } = useAppState();
+
   const [modalShow, setModalShow] = React.useState(false);
 
   const ManageModel = () => {
@@ -15,7 +20,7 @@ function NavBar(props) {
       <Link className="navbar-brand" to="/">
         Q&App
       </Link>
-      {localStorage.getItem("auth") ? (
+      {appState.isAuthenticated ? (
         <div>
           <OverlayTrigger
             trigger="click"

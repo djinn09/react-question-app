@@ -5,8 +5,10 @@ import Loader from "../_components/Loader";
 import { verifyEmail } from "../utills";
 import UserAuthApi from "./Service.js";
 import Cookies from "js-cookie";
+import { useAppState, Actions } from "../context";
 
 function LoginPopUp(props) {
+  const { dispatch } = useAppState();
   const [state, setState] = useState({
     email: "",
     password: "",
@@ -47,8 +49,14 @@ function LoginPopUp(props) {
 
       let token = data.token;
       var encodedString = btoa(token);
-      Cookies.set("token", encodedString, { expires: 1 });
-      localStorage.setItem("auth", data.email);
+      // Cookies.set("token", encodedString, { expires: 1 });
+      // localStorage.setItem("auth", data.email);
+      dispatch({
+        type:Actions.login,
+        payload:{
+          token:encodedString
+        }
+      });
       clearFormFields();
     } catch (error) {
       setError((prevState) => ({
