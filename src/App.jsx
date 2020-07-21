@@ -4,11 +4,10 @@ import { Route } from "react-router-dom";
 import NavBar from "./_components/NavBar";
 import Questions from "./_components/Questions";
 import Question from "./_components/Question";
-import { useAppState } from "./context";
+// import { useAppState } from "./context";
 
 function App() {
-  const { appState } = useAppState();
-  console.log(appState, "asi");
+  // const { appState } = useAppState();
   return (
     <div className="App">
       <div className="container">

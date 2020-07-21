@@ -4,7 +4,6 @@ import { Form, Button, Alert } from "react-bootstrap";
 import Loader from "../_components/Loader";
 import { verifyEmail } from "../utills";
 import UserAuthApi from "./Service.js";
-import Cookies from "js-cookie";
 import { useAppState, Actions } from "../context";
 
 function LoginPopUp(props) {
@@ -52,10 +51,11 @@ function LoginPopUp(props) {
       // Cookies.set("token", encodedString, { expires: 1 });
       // localStorage.setItem("auth", data.email);
       dispatch({
-        type:Actions.login,
-        payload:{
-          token:encodedString
-        }
+        type: Actions.login,
+        payload: {
+          token: encodedString,
+          user: data.email,
+        },
       });
       clearFormFields();
     } catch (error) {

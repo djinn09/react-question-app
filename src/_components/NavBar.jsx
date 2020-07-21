@@ -7,7 +7,7 @@ import { Popover, OverlayTrigger } from "react-bootstrap";
 import LoginPopup from "../LoginPage/Login";
 
 function NavBar(props) {
-  const { appState } = useAppState();
+  const { appState, logout } = useAppState();
 
   const [modalShow, setModalShow] = React.useState(false);
 
@@ -27,19 +27,22 @@ function NavBar(props) {
             placement="bottom"
             overlay={
               <Popover id="popover-positioned-bottom">
-                <Popover.Title as="h3">{`Popover placement`}</Popover.Title>
+                <Popover.Title as="h3">{appState.user}</Popover.Title>
                 <Popover.Content>
-                  <strong>Holy guacamole!</strong> Check this info.
+                  <Button onClick={logout}>Logout</Button>
                 </Popover.Content>
               </Popover>
             }
+            rootClose
           >
-            <button>
+            <Button>
               <img
                 src="https://img.icons8.com/ios/50/000000/cool.png"
+                width="30"
+                height="30"
                 alt="profile.png"
               />
-            </button>
+            </Button>
           </OverlayTrigger>
         </div>
       ) : (

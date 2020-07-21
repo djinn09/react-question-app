@@ -18,7 +18,6 @@ const getInitialState = () => {
   let cookie = Cookies.get("token");
   let user = localStorage.getItem("auth");
   // let access = Cookies.get("access");
-  console.log(cookie, user, "COK");
   if (
     (cookie !== null && cookie !== undefined) ||
     (user !== null && user !== undefined)
@@ -42,7 +41,7 @@ const reducer = (state = initialState, action) => {
         expires: 1,
       });
       localStorage.setItem("auth", JSON.stringify(action.payload.user));
-      localStorage.setItem("token", JSON.stringify(action.payload.token));
+      // localStorage.setItem("token", JSON.stringify(action.payload.user));
       return {
         ...state,
       };
@@ -62,7 +61,7 @@ export const AuthContext = createContext({
   logout: () => {},
 });
 
-export const AppStateProvide = ({ children }) => {
+export const AppStateProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState, getInitialState);
 
   const logout = async () => {
