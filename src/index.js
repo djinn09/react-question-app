@@ -2,15 +2,18 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
-import { BrowserRouter } from "react-router-dom";
 
 import * as serviceWorker from "./serviceWorker";
-import { configureFakeBackend } from "./_helper/fake-backend";
-configureFakeBackend();
+import { BrowserRouter } from "react-router-dom";
+import { AppStateProvider } from "./context";
+
 ReactDOM.render(
   <BrowserRouter>
-    <App />
+    <AppStateProvider>
+      <App />
+    </AppStateProvider>
   </BrowserRouter>,
+
   document.getElementById("root")
 );
 
