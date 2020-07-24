@@ -1,7 +1,6 @@
 import Axios from "axios";
 import Cookies from "js-cookie";
 
-console.log(process.env.API_URL);
 const ApiInstance = Axios.create({
   baseURL: `${process.env.REACT_APP_API_URL}`,
 });
@@ -16,7 +15,8 @@ const requestHandler = (request) => {
     // Modify request here
     const token = Cookies.get("token");
     if (token) {
-      request.headers["Authorization"] = "Bearer " + atob(token);
+      console.table(token)
+      request.headers["Authorization"] = "Bearer " + token;
     }
   }
   return request;
