@@ -13,10 +13,10 @@ const isHandlerEnabled = (config = {}) => {
 const requestHandler = (request) => {
   if (isHandlerEnabled(request)) {
     // Modify request here
-    const token = Cookies.get("token");
+    let token = Cookies.get("token");
     if (token) {
-      console.table(token)
-      request.headers["Authorization"] = "Bearer " + token;
+      console.table(token);
+      request.headers["Authorization"] = `Bearer ${token}`;
     }
   }
   return request;

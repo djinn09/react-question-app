@@ -47,13 +47,12 @@ function LoginPopUp(props) {
       });
 
       let token = data.token;
-      var encodedString = token;
       // Cookies.set("token", encodedString, { expires: 1 });
       // localStorage.setItem("auth", data.email);
       dispatch({
         type: Actions.login,
         payload: {
-          token: encodedString,
+          token: token,
           user: data.email,
         },
       });
