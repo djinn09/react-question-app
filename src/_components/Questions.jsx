@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import ApiInstance from "../api";
 
-async function QuestionService() {
+async function QuestionsService() {
   try {
     const response = await ApiInstance.get("/questions");
     if (response.status === 200) {
@@ -26,7 +26,7 @@ const Questions = (props) => {
 
   const loadData = async () => {
     try {
-      const ques = await QuestionService();
+      const ques = await QuestionsService();
       SetState({ questions: ques });
       SetLoading(false);
     } catch (error) {
