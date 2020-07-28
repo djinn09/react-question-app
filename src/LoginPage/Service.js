@@ -13,7 +13,6 @@ export default async function UserAuthApi(data) {
     }
     return Promise.reject("Something went wrong");
   } catch (error) {
-    console.log(error);
     let message = "";
     if (
       (error && error.response && error.response.data) ||

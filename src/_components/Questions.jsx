@@ -30,7 +30,6 @@ const Questions = (props) => {
       SetState({ questions: ques });
       SetLoading(false);
     } catch (error) {
-      console.log(error);
       SetState({ error: "Something Went Wrong...." });
     }
   };

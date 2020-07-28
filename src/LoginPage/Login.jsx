@@ -47,8 +47,6 @@ function LoginPopUp(props) {
       });
 
       let token = data.token;
-      // Cookies.set("token", encodedString, { expires: 1 });
-      // localStorage.setItem("auth", data.email);
       dispatch({
         type: Actions.login,
         payload: {
