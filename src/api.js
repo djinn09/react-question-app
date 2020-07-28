@@ -15,7 +15,6 @@ const requestHandler = (request) => {
     // Modify request here
     let token = Cookies.get("token");
     if (token) {
-      console.table(token);
       request.headers["Authorization"] = `Bearer ${token}`;
     }
   }
